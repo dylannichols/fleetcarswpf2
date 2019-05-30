@@ -5,38 +5,53 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FleetCarsWPF"
         mc:Ignorable="d"
-        Title="Vehicle Model" Height="350" Width="1000"
+        Title="Vehicle Model" Height="350" Width="980"
         WindowStartupLocation="CenterScreen" >
     <Grid>
 
-        <StackPanel Orientation="Horizontal" Background="Gray">
+        <StackPanel Orientation="Horizontal" Background="LightGray">
 
-            <Border BorderBrush="White" CornerRadius="2,2,2,2" BorderThickness="2,2,2,2" Margin="20, 20, 0, 20" Width="200">
-                <StackPanel Background="White" >
-                    <StackPanel Background="Aquamarine" Height="45">
+            <Border BorderBrush="#00bc9d" CornerRadius="5,5,0,0" BorderThickness="5,2,5,5" Margin="20, 20, 0, 20" Width="200">
+                <StackPanel Background="White">
+                    <StackPanel Background="#00bc9d" Height="45">
                         <Label Content="New Model" Foreground="White" FontSize="30"/>
                     </StackPanel>
                     <StackPanel>
                         <TextBox x:Name="Model_Number" BorderThickness="4, 4, 4, 4" Margin="20, 10, 20, 10" FontSize="20"/>
                         <TextBox x:Name="Model_Name" BorderThickness="4, 4, 4, 4" Margin="20, 10, 20, 10" FontSize="20"/>
                         <TextBox x:Name="Manufacturer" BorderThickness="4, 4, 4, 4" Margin="20, 10, 20, 10" FontSize="20"/>
-                        <Button Content="Update" Margin="20, 10, 20, 10" FontSize="20" Background="Green" />
+                        <Button Content="Update" Margin="20, 10, 20, 10" FontSize="20" Background="#00bc9d" Click="Button_Click_1" />
                     </StackPanel>
                 </StackPanel>
             </Border>
 
-            <Border BorderBrush="White" CornerRadius="2,2,2,2" BorderThickness="2,2,2,2" Margin="20, 20, 0, 20" Width="700">
-            <StackPanel Background="White">
-                <StackPanel Background="Aquamarine" Height="45">
-                    <Label Content="List of Model(s)" Foreground="White" FontSize="30"/>
-                </StackPanel>
-                <StackPanel >
-                    <DataGrid />
-                </StackPanel>
-                <StackPanel Orientation="Horizontal">
-                    <Button Content="Edit" Margin="20, 10, 20, 10" FontSize="20" Background="Aquamarine" />
-                    <Button Content="Delete" Margin="20, 10, 20, 10" FontSize="20" Background="Red" />
-                </StackPanel>
+            <Border BorderBrush="#00bc9d" CornerRadius="5,5,0,0" BorderThickness="5,2,5,5" Margin="20, 20, 0, 20" Width="700">
+                <StackPanel Background="White">
+                    <StackPanel Background="#00bc9d" Height="45">
+                        <Label Content="List of Model(s)" Foreground="White" FontSize="30"/>
+                    </StackPanel>
+                    <StackPanel Height="180">
+                        <DataGrid x:Name="FleetCarsGrid" AutoGenerateColumns="False" FontSize="15">
+                            <DataGrid.Resources>
+                                <Style BasedOn="{StaticResource {x:Type DataGridColumnHeader}}" TargetType="{x:Type DataGridColumnHeader}">
+                                    <Setter Property="Background" Value="#2b3e4f" />
+                                    <Setter Property="Foreground" Value="#fff" />
+                                    <Setter Property="FontSize" Value="20" />
+                                    <Setter Property="Padding" Value="10" />
+                                    <Setter Property="HorizontalContentAlignment" Value="Center" />
+                                </Style>
+                            </DataGrid.Resources>
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Width="*" IsReadOnly="True" Header="Model No." Binding="{Binding Id}" />
+                                <DataGridTextColumn Width="*" IsReadOnly="True" Header="Model Name" Binding="{Binding Model}" />
+                                <DataGridTextColumn Width="*" IsReadOnly="True" Header="Manufacturer" Binding="{Binding Manufacturer}" />
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom">
+                        <Button Content="Edit" Margin="20, 10, 20, 10" Width="200" FontSize="20" Foreground="White" Background="#00bc9d" Click="Button_Click" />
+                        <Button Content="Delete" Margin="20, 10, 20, 10" Width="200" FontSize="20" Foreground="White" Background="Red" />
+                    </StackPanel>
             </StackPanel>
             </Border>
 
